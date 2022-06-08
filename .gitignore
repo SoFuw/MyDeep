@@ -1,0 +1,13 @@
+data/
+output/
+weights/
+trash/
+models/
+experiment/
+result_video/
+result_images/
+results_MLP/
+test1/
+videos_silsin/
+__pycache__/
+weights/
