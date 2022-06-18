@@ -67,7 +67,6 @@ class MyInference:
         dirs = os.listdir(target_dir)
         dirs.sort()
         for image_path in dirs:
-            print(image_path)
             for image_format in [".png", ".jpg", ".jpeg"]:
                 if(image_format in image_path):
                     image = cv2.imread(f'{target_dir}/{image_path}')
@@ -166,7 +165,6 @@ class MyInference:
                     break
 
             for idx in range(len(inference_data)):
-                print(idx)
                 visualizer = Visualizer(
                     self.loaded_images[dir_name][idx][1][:, :, ::-1], self.metadata, scale=1.0)
                 input = self.__get_for_mlp_keypoints__(
@@ -216,7 +214,7 @@ class MyInference:
             inferenced_data["instances"] = inferenced_data["instances"][inferenced_data["instances"].scores > 0.6]
             inference_data.append(inferenced_data)
         visualizer = Visualizer(
-            original_image, self.metadata, scale=1.0)
+            original_image[:, :, ::-1], self.metadata, scale=1.0)
         input = self.__get_for_mlp_keypoints__(
             inference_data[0]["instances"], args)
         with torch.no_grad():
